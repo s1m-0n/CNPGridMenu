@@ -156,7 +156,10 @@
     NSInteger cellCount = [collectionView numberOfItemsInSection:section];
     CGFloat inset = (collectionView.bounds.size.width - (cellCount * (cellWidth + cellSpacing))) * 0.5;
     inset = MAX(inset, 0.0);
-    return UIEdgeInsetsMake(0.0, inset, 0.0, 0.0);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return UIEdgeInsetsMake(0.0, inset, 0.0, 0.0);
+    } else
+        return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 #pragma mark - UITapGestureRecognizer Delegate 
